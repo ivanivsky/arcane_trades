@@ -1,0 +1,22 @@
+/* Parent Flex Container */
+.flex-container {
+    display: flex; /* Enable Flexbox */
+    justify-content: space-between; /* Distribute items evenly with space between */
+    align-items: center; /* Align items vertically in the center */
+    padding: 10px; /* Add spacing inside the container */
+    background-color: #2a2a2a; /* Dark background to match your theme */
+    border: 2px solid #444444; /* Subtle border for the container */
+  }
+  
+  /* Child Flex Items */
+  .flex-container div {
+    background: peachpuff; /* Temporary styling to visualize items */
+    border: 4px solid brown; /* Visualize individual boxes */
+    flex: 1; /* Make all columns equal in width */
+    height: 100px; /* Fixed height for now */
+    margin: 5px; /* Space between items */
+    text-align: center; /* Center-align text in the box */
+    line-height: 100px; /* Vertically center text with line-height */
+    font-family: "Courier New", Courier, monospace; /* Match technical theme */
+    font-size: 16px;
+  }
