@@ -42,6 +42,7 @@
     background-color: #1F2937;
     display: flex;
     justify-content: center;
+    padding: 40px 0;
 
 }
 
@@ -51,6 +52,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 40px;
 }
 
 .header-column-1 {
@@ -58,8 +60,15 @@
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    gap: 20px;
+}
 
-    
+.header-column-2 img {
+    max-width: 100; 
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+
 }
 
 .large-title {
@@ -71,6 +80,8 @@
 .title-text {
     font-size: 18px;
     color: #E5E7EB;
+    max-width: 450px;
+    line-height: 1.5;
 }
 
 .social,
@@ -79,32 +90,73 @@
     border: 1px solid #5995DA;
 }
 
-.photo-grid-container {
+/* Section Container */
+.trading-card-section {
+    text-align: center;
+    padding: 60px 0;
+    background-color: #1F2937;  /* Dark background to match theme */
+}
+
+/* Header Text */
+.section-header {
+    font-size: 48px;
+    font-weight: 900;
+    color: #F9FAF8;
+    margin-bottom: 40px;  /* Space between header and cards */
+}
+
+/* Grid for the Cards */
+.trading-card-grid {
     display: flex;
     justify-content: center;
+    gap: 40px;  /* Space between cards */
+    flex-wrap: wrap;  /* Allow wrapping for smaller screens */
+    padding: 0 100px; /* Padding on both sides of the grid */
 }
 
-.photo-grid {
-    width: 900px; 
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
+/* Individual Card Styles */
+.trading-card {
+    width: 250px;
+    height: 350px;
+    background-color: #FFF;
+    border-radius: 15px;  /* Rounded corners for card feel */
+    overflow: hidden;  /* Clip image if it exceeds container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow for card lift */
+    transition: transform 0.3s ease;  /* Smooth effect for interactivity */
+    cursor: pointer;
 }
 
-.first-item {
-    order: 1;
+.trading-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Ensures image covers the card properly */
 }
 
-.last-item {
-    order: -1;
+/* Hover Effect for Interactivity */
+.trading-card:hover {
+    transform: translateY(-10px);  /* Lift the card slightly on hover */
 }
 
-.photo-grid-item {
-    border: 1px solid #fff;
-    width: 300px;
-    height: 300px;
+/* Responsive Grid Layout */
+@media (max-width: 1200px) {
+    .trading-card-grid {
+        padding: 0 40px;
+    }
+    .trading-card {
+        width: 220px;
+        height: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .trading-card-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .trading-card {
+        width: 300px;
+        height: 400px;
+    }
 }
 
 .footer {
