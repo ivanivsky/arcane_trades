@@ -2,14 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Roboto;
+    font-family: 'Poppin', sans-serif;
 }
 
 .menu-container {
     display: flex;
     justify-content: center;
     color: #fff;
-    background-color: #5995DA;
+    background-color: #3d1579;
     padding: 20px 0;
 }
 
@@ -38,8 +38,31 @@
     margin-left: 20px;
 }
 
+.signup, .login {
+    transition: color 0.3s ease;
+}
+
+.signup:hover, .login:hover {
+    color: #d4af37; /* Matches the gold accent */
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack the header content */
+        text-align: center;
+    }
+
+    .header-column-1, .header-column-2 {
+        align-items: center;
+    }
+
+    .header-column-2 img {
+        max-width: 150px; /* Resize image for smaller screens */
+    }
+}
+
 .header-container {
-    background-color: #1F2937;
+    background-color: #345e63;
     display: flex;
     justify-content: center;
     padding: 40px 0;
@@ -73,13 +96,13 @@
 
 .large-title {
     font-size: 48px;
-    color: #F9FAF8;
+    color: #ECECEC;
     font-weight: 900;
 }
 
 .title-text {
     font-size: 18px;
-    color: #E5E7EB;
+    color: #D4D4D4;
     max-width: 450px;
     line-height: 1.5;
 }
@@ -92,16 +115,16 @@
 
 /* Section Container */
 .trading-card-section {
-    text-align: center;
-    padding: 60px 0;
-    background-color: #1F2937;  /* Dark background to match theme */
+    text-align: center; /* Center the title and content */
+    padding: 60px 0; /* Space above and below the section */
+    background-color: #2e2e2e; /* Muted blue to complement theme */
 }
 
 /* Header Text */
 .section-header {
     font-size: 48px;
     font-weight: 900;
-    color: #F9FAF8;
+    color: #ECECEC;
     margin-bottom: 40px;  /* Space between header and cards */
 }
 
@@ -110,70 +133,99 @@
     display: flex;
     justify-content: center;
     gap: 40px;  /* Space between cards */
-    flex-wrap: wrap;  /* Allow wrapping for smaller screens */
-    padding: 0 100px; /* Padding on both sides of the grid */
+    flex-wrap: wrap;
+    padding: 40px 100px; 
 }
 
-/* Individual Card Styles */
+/* Individual Card */
 .trading-card {
     width: 250px;
     height: 350px;
-    background-color: #FFF;
-    border-radius: 15px;  /* Rounded corners for card feel */
-    overflow: hidden;  /* Clip image if it exceeds container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow for card lift */
-    transition: transform 0.3s ease;  /* Smooth effect for interactivity */
+    perspective: 1000px; /* Enable 3D flip effect */
     cursor: pointer;
 }
 
-.trading-card img {
+.trading-card .card-front,
+.trading-card .card-back {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /* Ensures image covers the card properly */
+    border-radius: 15px;
+    background-color: #ffffff;
+    position: absolute;
+    backface-visibility: hidden; /* Hide the back side by default */
+    transition: transform 0.6s ease-in-out; /* Smooth flipping */
+    overflow: hidden; /* Clip the image inside */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
-/* Hover Effect for Interactivity */
+.trading-card .card-front {
+    transform: rotateY(0); /* Default position for the front */
+}
+
+.trading-card .card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(145deg, #3d1579, #2e2e2e); /* Gradient for a magical feel */
+    color: #D4D4D4;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Add depth */
+    border: 2px solid #d4af37; /* Subtle gold border */
+}
+
+/* Flip the card on hover */
+.trading-card:hover .card-front {
+    transform: rotateY(-180deg);
+}
+
+.trading-card:hover .card-back {
+    transform: rotateY(0);
+}
+
 .trading-card:hover {
-    transform: translateY(-10px);  /* Lift the card slightly on hover */
+    transform: scale(1.05); /* Slightly enlarges the card */
+    transition: transform 0.3s ease; /* Smooth animation */
 }
 
-/* Responsive Grid Layout */
-@media (max-width: 1200px) {
-    .trading-card-grid {
-        padding: 0 40px;
-    }
-    .trading-card {
-        width: 220px;
-        height: 320px;
-    }
+/* Card Title (Front Side) */
+.card-title {
+    position: absolute;
+    bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 18px;
+    border-radius: 5px;
 }
 
-@media (max-width: 768px) {
-    .trading-card-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .trading-card {
-        width: 300px;
-        height: 400px;
-    }
-}
 
 .footer {
-    display: flex;
-    justify-content: space-between;
+    background-color: #2a2a2a; /* Matches the header's dark color */
+    color: #CFCFCF; /* White text for contrast */
+    text-align: center; /* Center the text */
+    padding: 10px 0; /* Thin vertical padding */
+    font-size: 14px; /* Slightly smaller font for a subtle footer */
+    border-top: 1px solid #444444; /* Subtle border for separation */
 }
 
-.footer-item {
-    border: 1px solid #fff;
-    background-color: #d6E9FE;
-    height: 200px;
-    flex: 1;
+/* Button Highlights */
+.sign-up-button {
+    background-color: #d4af37;
+    color: #1e1e1e;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
-.footer-one,
-.footer-three {
-    background-color: #5995DA;
-    flex: initial;
-    width: 300px;
+.sign-up-button:hover {
+    background-color: #b08c2d;
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Deeper shadow */
 }
